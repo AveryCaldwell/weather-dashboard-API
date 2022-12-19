@@ -72,7 +72,7 @@ function getSearchList() {
 const generateForecastUrl = (lat, lon) => {
   return `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=imperial`;
 };
-// gets the citits coordinates (lat&lon)
+// gets the cities coordinates (lat&lon)
 const getForecast = (cityWeather) => {
   fetch(generateForecastUrl(cityWeather.coord.lat, cityWeather.coord.lon))
     .then(
@@ -98,8 +98,6 @@ function setup() {
   });
   button.addEventListener("click", () => {
     getWeather();
-    // cityDash();
-    // forecastCards();
   });
 }
 // Runs setUp function once the HTML doc has been parsed

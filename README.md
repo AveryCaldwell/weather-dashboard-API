@@ -44,7 +44,7 @@ Acceptance Criteria
 ### Links
 ​
 - Solution URL: [https://github.com/AveryCaldwell/weather-dashboard-API](https://github.com/AveryCaldwell/weather-dashboard-API)
-- Live Site URL: [https://averycaldwell.github.io/horiseon-website-optimization/index.html](https://averycaldwell.github.io/horiseon-website-optimization/index.html)
+- Live Site URL: [https://averycaldwell.github.io/weather-dashboard-API/](https://averycaldwell.github.io/weather-dashboard-API/)
 ​
 ## My process
 ​
@@ -52,96 +52,81 @@ Acceptance Criteria
 ​
 - Semantic HTML5 markup
 - CSS custom properties
-- Mobile-first workflow
+- JavaScript
 - Git/Git pages
-​
+- ​jQuery
+- Server-Side API
 ​
 ​
 ### What I learned
 
- - While working on this project, I learned how to use responsive design mode in Google Dev and Microsoft Edge in order to ensure the webpage formatted correctly regardless of screen size. 
- - I learned how to consolidate code in order to prevent redundant CSS and make it easier to read.
- - In regard to accessibility, I learned that adding the image alt attribute provides descriptive information for users that are unable to access the image.
-```html
-<img src="./assets/images/search-engine-optimization.jpg" class="float-left" alt="Search Engine Optimization" />
-```
-​
- - I am proud of this code because it allows the webpage to keep its functionality while resizing to standard mobile sizes.
- - I also prevented repetitive code by identifying shared factors and combining elements.
+ - While working on this project, I learned how to use the API OpenWeatherMap to collect weather data on cities. 
+ - I learned how to consolidate code in order to prevent redundant JS and make it easier to re-use code.
+ - In regard to localStorage, I now feel more comfrotable accessing saved data and navigating objects in order to get specific info. 
 
-```css
-@media screen and (max-width: 992px) {
-  header {
-    width: 100%;
-    text-align: left;
-  }
-  header nav {
-    text-align: right;
-    width: 40%;
-    padding-top: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 18px;
-  }
-  header nav ul li {
-    padding: 5px;
-  }
-  .hero,
-  .content {
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .float-left,
-  .float-right {
-    width: 40%;
-  }
-  .content-item,
-  .benefit-item,
-  .benefits {
-    width: calc(100% - 40px);
-  }
-}
-/* Large smartphones */
-@media screen and (max-width: 768px) {
-  .float-left,
-  .float-right {
-    width: 42%;
-  }
-}
-/* Small smartphones  */
-@media screen and (max-width: 576px) {
-  header nav {
-    width: 50%;
+```js
+const generateForecastUrl = (lat, lon) => {
+  return `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=imperial`;
+};
+```
+```js
+function forecastCards() {
+  let forecastDate,
+    forecastIcon,
+    forecastTemp,
+    forecastWind,
+    forecastHumidity,
+    dayTime;
+  for (let i = 1; i < 6; i++) {
+    dayTime = 3 + 8 * (i - 1);
+    forecastDate = document.getElementById("forecastDate" + i);
+    forecastDate.innerHTML = dateObj[i].dateStr;
+    forecastIcon = document.getElementById("forecastIcon" + i);
+    forecastIcon.src = `http://openweathermap.org/img/wn/${cityForecast.list[dayTime].weather[0].icon}.png`;
+    forecastTemp = document.getElementById("forecastTemp" + i);
+    forecastTemp.innerHTML = cityForecast.list[dayTime].main.temp;
+    forecastWind = document.getElementById("forecastWind" + i);
+    forecastWind.innerHTML = cityForecast.list[dayTime].wind.speed;
+    forecastHumidity = document.getElementById("forecastHumidity" + i);
+    forecastHumidity.innerHTML = cityForecast.list[dayTime].main.humidity;
   }
 }
 ```
-
+```js
+function cityDash() {
+  // Date
+  let currentDay = document.getElementById("currentDay");
+  currentDay.innerHTML = cityWeather.name + " (" + dateObj[0].dateStr + ")";
+  // Icon
+  let currentIcon = document.getElementById("currentIcon");
+  currentIcon.src = `http://openweathermap.org/img/wn/${cityWeather.weather[0].icon}.png`;
+  // Temp
+  let currentTemp = document.getElementById("currentTemp");
+  currentTemp.innerHTML = cityWeather.main.temp;
+  // Wind
+  let currentWind = document.getElementById("currentWind");
+  currentWind.innerHTML = cityWeather.wind.speed;
+  // Humidity
+  let currentHumidity = document.getElementById("currentHumidity");
+  currentHumidity.innerHTML = cityWeather.main.humidity;
+}
+```
 
 ​
 ### Continued development
 ​
-I want to further my understanding of CSS flex and CSS grid because I think it would have better achieved what the web designer was going for when creating this webpage. I would also like to better understand menu interactions to provide a better experience for the user.
+I want to further my understanding of `fetch()` method because its an easier, better method of getting asynchronous resourses. I would also like to better understand `template literals` becauase this method provides a simple way to insert expressions and variables into strings.
 
 
 ​
 ### Useful resources
 ​
-- [https://www.internetingishard.com/html-and-css/semantic-html/](https://www.internetingishard.com/html-and-css/semantic-html/) - This helped me understand Semantic HTML markup. It provided an easy visual to follow and obtain a better understanding for developing web pages. 
-- [https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048](https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048) - This is a great guide on learning CSS selectors.
+- [fetch( )](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch/) - This helped me get a better understanding of `fetch()`. It provided thorough explanations and multiple visual examples that made it easier to comprehend. 
+- [Template Literals](https://www.w3schools.com/js/js_string_templates.asp) - This is a great guide on learning the many ways of using Template Literals.
 ​
 
 ​
 ## Author
   Avery Caldwell
 - GitHub - [AveryCaldwell](https://github.com/AveryCaldwell)
-# helpful links:
-
-- https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-
-- https://coding-boot-camp.github.io/full-stack/apis/api-resources
-
-- https://www.w3schools.com/js/js_string_templates.asp
 
