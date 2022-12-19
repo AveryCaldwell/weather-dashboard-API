@@ -1,6 +1,7 @@
-// API call = https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}&lang={lang}
 let searchList;
 let dateObj;
+let cityWeather;
+let cityForecast;
 // Variable to Store the API Key
 const weatherKey = "982cf2fd80afcedc816db8b861517569";
 
@@ -9,12 +10,12 @@ const weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
 // Beginning string of forecast url path
 const forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=";
 
-// Generates weather URL
+// Generates weather URL with a pass in cityName
 const generateWeatherUrl = function (cityName) {
   return `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${weatherKey}&units=imperial`;
 };
-let cityWeather, cityForecast;
-// Gets weather data by city (via user input in search bar)
+
+// Gets weather data by city (via user input in searchbar)
 const getWeather = (isFromHistory, historicValue) => {
   let searchInput;
   if (isFromHistory) {
@@ -24,6 +25,7 @@ const getWeather = (isFromHistory, historicValue) => {
       .getElementById("searchInput")
       .value.replaceAll(" ", "+");
   }
+  // Uses fetch on the weather url to call their api, and then if the response is okay, it sets the data to response.json.
   fetch(generateWeatherUrl(searchInput))
     .then((response) => {
       if (response.ok) {
@@ -32,25 +34,26 @@ const getWeather = (isFromHistory, historicValue) => {
         return false;
       }
     })
-    // If a valid city is not entered, an alert message will pop up
+    // If an invalid city is entered, an alert message will pop up
     .then((data) => {
       if (!data) {
         alert("Invalid city name, please give a valid city name.");
       } else {
         // Data is now stored in the cityWeather variable
         cityWeather = data;
+        // if a new city is searched, then the city name is added to search history
         if (!isFromHistory) {
           addNewSearch(cityWeather.name);
         }
+        // Calls cityDash function
         cityDash();
-
         // Gets forecast of selected city
         getForecast(cityWeather);
       }
     });
 };
 
-// Adding cityName to the end of the searchList array; `.push` takes a variable and adds it to the end of an array
+// Adding cityName to the end of the searchList array; `.push` takes a variable and adds it to the end of an array.
 function addNewSearch(cityName) {
   searchList.push(cityName);
   // Saves searchList items to localStorage as a string.
@@ -59,11 +62,12 @@ function addNewSearch(cityName) {
 }
 
 function getSearchList() {
-  // if the local storage is empty
+  // if the local storage is not empty,
   if (localStorage.getItem("searchList") != undefined) {
+    // searchList items are turned into an ordered list of substrings, puts these substrings into an array.
     searchList = localStorage.getItem("searchList").split(",");
-    //  Otherwise it sets searchList to an empty array.
   } else {
+    //  Otherwise it sets searchList to an empty array.
     searchList = [];
   }
 }
@@ -76,7 +80,8 @@ const generateForecastUrl = (lat, lon) => {
 const getForecast = (cityWeather) => {
   fetch(generateForecastUrl(cityWeather.coord.lat, cityWeather.coord.lon))
     .then(
-      (response) => response.json() // When curly brackets aren't used in a arrow function the default is to return the value. this becomes data in the next function
+      // When curly brackets aren't used in a arrow function the default is to return the value. this becomes data in the next function
+      (response) => response.json()
     )
     .then((data) => {
       cityForecast = data;
@@ -85,9 +90,7 @@ const getForecast = (cityWeather) => {
     });
 };
 
-//getWeather("Atlanta"); //this call gets the weather and the 3 hour 5 day forecast for atlanta.
-
-// When button is selected or `Enter` is pressed, call getWeather function
+// When button is selected or `Enter` is pressed, getWeather function is called.
 function setup() {
   let button = document.getElementById("searchButton");
   let searchInput = document.getElementById("searchInput");
@@ -100,7 +103,8 @@ function setup() {
     getWeather();
   });
 }
-// Runs setUp function once the HTML doc has been parsed
+
+// Runs multiple functions once the HTML doc has been parsed.
 document.addEventListener("DOMContentLoaded", function () {
   setup();
   currentDate();
@@ -109,27 +113,27 @@ document.addEventListener("DOMContentLoaded", function () {
   getWeather(true, "Atlanta");
 });
 
-// this function clears search history, creates new <li> list elements of cities entered into search bar
+// This function clears search history, creates new <li> list elements of cities entered into search bar
 function populateSearchHistory() {
   let searchHistory = document.querySelector(".searchHistory");
-  // getting rid of everything inside of searchHistory
+  // Clears searchHistory
   searchHistory.innerHTML = "";
   // for loop that reverses the order of the search list array
   for (let i = searchList.length - 1; i >= 0; i--) {
     console.log(i);
     let newListItem = document.createElement("li");
     // creates a class for list elements
-    //newListItem.setAttribute("historicValue", searchList[i]);
     newListItem.classList.add("listItem");
     newListItem.addEventListener("click", function () {
       getWeather(true, searchList[i]);
     });
+    // newListItems are added to the end of the list
     newListItem.innerHTML = searchList[i];
     searchHistory.appendChild(newListItem);
   }
 }
 
-// Takes in curent weather obj (cityWeather pass in) to populate all the fields in the html
+// Takes in curent weather obj to populate all the fields in the html
 function cityDash() {
   // Date
   let currentDay = document.getElementById("currentDay");
@@ -148,7 +152,7 @@ function cityDash() {
   currentHumidity.innerHTML = cityWeather.main.humidity;
 }
 
-// Takes in curent forecast obj (cityWeather pass in) to populate all the fields in the html
+// Takes in curent forecast obj to populate all the fields in the html
 function forecastCards() {
   let forecastDate,
     forecastIcon,
@@ -174,7 +178,6 @@ function forecastCards() {
 
 // Date return function
 function currentDate() {
-  // let currentDate = new date();
   let dateTime;
   dateObj = {};
   dateTime = new Date();
