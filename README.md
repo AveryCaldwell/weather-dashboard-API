@@ -1,5 +1,10 @@
+# 🌦️ Weather Dashboard API
+
+<br>
+
 ## Table of contents
 ​
+- [Description](#description)
 - [Overview](#overview)
   - [The Challenge](#the-challenge)
   - [Screenshot](#screenshot)
@@ -12,8 +17,16 @@
 - [Author](#author)
 
 ​
-## Overview
+
+<br>
+<br>
+
+# 📁 Description 
+- a weather app that includes a search option, a list of cities, and a five-day forecast and current weather conditions for any city.
 ​
+
+## 📝 Overview
+
 ### **The Challenge**
 
 ​
@@ -36,19 +49,19 @@ Acceptance Criteria
 - THEN I am again presented with current and future conditions for that city
 
 ​
-### Screenshot
+### 📷 Screenshot
 ​
 ![](./Assets/images/screenshot.png)
 ​
 ​
-### Links
+### 📎 Links
 ​
 - Solution URL: [https://github.com/AveryCaldwell/weather-dashboard-API](https://github.com/AveryCaldwell/weather-dashboard-API)
 - Live Site URL: [https://averycaldwell.github.io/weather-dashboard-API/](https://averycaldwell.github.io/weather-dashboard-API/)
 ​
-## My process
+## 💡 My process
 ​
-### Built with
+### 🔨 Built with
 ​
 - Semantic HTML5 markup
 - CSS custom properties
@@ -58,7 +71,7 @@ Acceptance Criteria
 - Server-Side API
 ​
 ​
-### What I learned
+### 🧠 What I learned
 
  - While working on this project, I learned how to use the API OpenWeatherMap to collect weather data on cities. 
  - I learned how to consolidate code in order to prevent redundant JS and make it easier to re-use code.
@@ -113,20 +126,23 @@ function cityDash() {
 ```
 
 ​
-### Continued development
+### 📖 Continued development
 ​
 I want to further my understanding of `fetch()` method because its an easier, better method of getting asynchronous resourses. I would also like to better understand `template literals` becauase this method provides a simple way to insert expressions and variables into strings.
 
 
 ​
-### Useful resources
+### 📚 Useful resources
 ​
 - [fetch( )](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch/) - This helped me get a better understanding of `fetch()`. It provided thorough explanations and multiple visual examples that made it easier to comprehend. 
 - [Template Literals](https://www.w3schools.com/js/js_string_templates.asp) - This is a great guide on learning the many ways of using Template Literals.
+- [Emojis](https://github.com/ikatyang/emoji-cheat-sheet#office)
 ​
 
 ​
-## Author
+## ✏️ Author
   Avery Caldwell
+- Email: [AveryCaldwell7@gmail.com](AveryCaldwell7@gmail.com)
+- LinkedIn: [https://www.linkedin.com/in/averycaldwell/](https://www.linkedin.com/in/averycaldwell/)
 - GitHub - [AveryCaldwell](https://github.com/AveryCaldwell)
 
