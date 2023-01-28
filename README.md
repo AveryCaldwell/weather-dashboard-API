@@ -24,6 +24,7 @@
 # 📁 Description 
 - a weather app that includes a search option, a list of cities, and a five-day forecast and current weather conditions for any city.
 ​
+<br>
 
 ## 📝 Overview
 
@@ -61,6 +62,8 @@ Acceptance Criteria
 ​
 ## 💡 My process
 ​
+<br>
+
 ### 🔨 Built with
 ​
 - Semantic HTML5 markup
@@ -128,7 +131,7 @@ function cityDash() {
 ​
 ### 📖 Continued development
 ​
-I want to further my understanding of `fetch()` method because its an easier, better method of getting asynchronous resourses. I would also like to better understand `template literals` becauase this method provides a simple way to insert expressions and variables into strings.
+- I want to further my understanding of `fetch()` method because its an easier, better method of getting asynchronous resourses. I would also like to better understand `template literals` becauase this method provides a simple way to insert expressions and variables into strings.
 
 
 ​
