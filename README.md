@@ -1,6 +1,5 @@
 # 🌦️ Weather Dashboard API
 
-<br>
 
 ## Table of contents
 ​
@@ -60,9 +59,9 @@ Acceptance Criteria
 - Solution URL: [https://github.com/AveryCaldwell/weather-dashboard-API](https://github.com/AveryCaldwell/weather-dashboard-API)
 - Live Site URL: [https://averycaldwell.github.io/weather-dashboard-API/](https://averycaldwell.github.io/weather-dashboard-API/)
 ​
+
 ## 💡 My process
 ​
-<br>
 
 ### 🔨 Built with
 ​
