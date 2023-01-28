@@ -49,6 +49,13 @@ Acceptance Criteria
 - THEN I am again presented with current and future conditions for that city
 
 ​
+### 👤 User Experience
+​
+1. Input a city into the search bar.
+2. Click the search button.
+3. Then curernt and future weather conditions are populated and that city is added to the search history.
+4. Click on a city in the search history to be presented with the current and future weather conditions for that city again.
+
 ### 📷 Screenshot
 ​
 ![](./Assets/images/screenshot.png)
