@@ -6,6 +6,7 @@
 - [Description](#description)
 - [Overview](#overview)
   - [The Challenge](#the-challenge)
+  - [User experience](#user-experience)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
