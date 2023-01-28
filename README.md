@@ -77,7 +77,7 @@ Acceptance Criteria
 - CSS custom properties
 - JavaScript
 - Git/Git pages
-- ​jQuery
+- jQuery
 - Server-Side API
 ​
 ​
